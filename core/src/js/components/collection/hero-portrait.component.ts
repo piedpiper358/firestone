@@ -6,9 +6,10 @@ import { CollectionReferenceCard } from './collection-reference-card';
 	selector: 'hero-portrait',
 	styleUrls: [`../../../css/component/collection/hero-portrait.component.scss`],
 	template: `
-		<div class="hero-portrait" [ngClass]="{ 'missing': missing }">
+		<div class="hero-portrait" [ngClass]="{ 'missing': missing, 'showing-placeholder': showPlaceholder }">
 			<div class="perspective-wrapper" rotateOnMouseOver>
-				<img [src]="image" />
+				<img class="placeholder" src="assets/images/hero-placeholder.png" />
+				<img class="real-portrait" [src]="image" (load)="imageLoadedHandler()"/>
 			</div>
 		</div>
 	`,
@@ -22,6 +23,11 @@ export class HeroPortraitComponent {
 
 	missing: boolean;
 	image: string;
+	showPlaceholder = true;
 
 	constructor(private readonly i18n: LocalizationFacadeService) {}
+
+	imageLoadedHandler() {
+		this.showPlaceholder = false;
+	}
 }

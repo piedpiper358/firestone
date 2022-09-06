@@ -1,6 +1,27 @@
 .hero-portrait {
-	img {
+
+	.placeholder {
+		position: absolute;
+		margin: auto;
+		top: -2%;
+		width: 95%;
+		left: 2%;
+		opacity: 0;
+	}
+	.real-portrait {
 		width: 100%;
+		position: relative;
+		opacity: 0.9;
+		transition: transform 0.2s;
+	}
+
+	&.showing-placeholder {
+		.real-portrait {
+			opacity: 0;
+		}
+		.placeholder {
+			opacity: 0.7;
+		}
 	}
 
 	.perspective-wrapper {
