@@ -114,17 +114,17 @@ export class BgsChartWarbandCompositionComponent {
 	chartData: any[];
 	colorScheme = {
 		domain: [
-			'#26a024',
-			'#404ED3',
-			'#E9A943',
-			'#A276AF',
-			'#9FB6D7',
-			'#43403d',
-			'#DE5959',
-			'#c56700',
-			'#13928c',
-			'#D9C3AB',
-			'#D9C3AB',
+			'#436612', //beast
+			'#f2d241', //mech
+			'#f07f07', //dragon
+			'#873f99', //demon
+			'#19c916', //murloc
+			'#393A3D', //pirate
+			'#4a98ff', //elemental
+			'#d12626', //quilboar
+			'#13928c', //naga
+			'#D9C3AB', //all
+			'#D9C3AB', //blank
 		],
 	};
 	barPadding: number;
@@ -231,7 +231,7 @@ export class BgsChartWarbandCompositionComponent {
 			}
 			this._dirty = false;
 			this.dimensions = [rect.width, rect.height - 15];
-			this.barPadding = Math.max(25 - this.chartData.length, Math.min(40, 40 - 2 * this.chartData.length));
+			this.barPadding = Math.round(rect.width / this.chartData.length / 4 );
 			this.loaded = this.dimensions?.length > 0 && this.chartData?.length > 0;
 
 			if (!(this.cdr as ViewRef)?.destroyed) {
