@@ -235,8 +235,7 @@ export class BgsPostMatchStatsRecapComponent {
 		// Hack for Toki, to avoid counting the hero power as a refresh (even though it technically
 		// is a refresh)
 		const rerolls = this._stats.stats.rerollsOverTurn.map((value) => value.value).reduce((a, b) => a + b, 0);
-		this.rerolls =
-			this._stats.player.cardId === CardIds.InfiniteTokiBattlegrounds ? rerolls - this.heroPowers : rerolls;
+		this.rerolls = rerolls;
 		this.minionsKilled = this._stats.stats.totalEnemyMinionsKilled;
 		this.heroesKilled = this._stats.stats.totalEnemyHeroesKilled;
 		const battlesGoingFirst = this._stats.stats.wentFirstInBattleOverTurn.filter((value) => value.value === true)

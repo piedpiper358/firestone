@@ -24,6 +24,7 @@ import { AbstractSubscriptionComponent } from '../../../../abstract-subscription
 				[data]="obs.value.data"
 				[labels]="obs.value.labels"
 				[emptyStateMessage]="'app.battlegrounds.personal-stats.hero-details.mmr.empty-state-message'"
+				[labelFormattingFn]="obs.value.labelFormattingFn"
 			></graph-with-single-value>
 		</div>
 	`,
@@ -31,7 +32,7 @@ import { AbstractSubscriptionComponent } from '../../../../abstract-subscription
 })
 export class BgsMmrEvolutionForHeroComponent extends AbstractSubscriptionComponent implements AfterContentInit {
 	value$: Observable<Value>;
-
+	
 	constructor(
 		private readonly i18n: LocalizationFacadeService,
 		protected readonly store: AppUiStoreFacadeService,
@@ -85,6 +86,9 @@ export class BgsMmrEvolutionForHeroComponent extends AbstractSubscriptionCompone
 				},
 			],
 			labels: Array.from(Array(finalResult.length), (_, i) => i + 1).map((matchIndex) => '' + matchIndex),
+			labelFormattingFn: (label, index, labels) => {
+				return label + ' MMR';
+			},
 		};
 		return result;
 	}
@@ -93,4 +97,5 @@ export class BgsMmrEvolutionForHeroComponent extends AbstractSubscriptionCompone
 interface Value {
 	readonly data: ChartDataSets[];
 	readonly labels: Label;
+	readonly labelFormattingFn?: (label: string, index: number, labels: string[]) => string;
 }

@@ -28,11 +28,12 @@
 		li {
 			width: 155px;
 			height: 200px;
+			margin-top: 3px;
 			margin-right: 13px;
-			margin-bottom: 13px;
+			margin-bottom: 10px;
 
 			&.valid-merging-target {
-				border: 2px solid var(--color-1);
+				outline: 2px solid var(--color-1);
 				opacity: 0.8;
 			}
 			&.invalid-merging-target {

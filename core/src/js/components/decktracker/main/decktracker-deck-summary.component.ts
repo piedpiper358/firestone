@@ -89,10 +89,10 @@ import { OverwolfService } from '../../../services/overwolf.service';
 				[helpTooltip]="deleteDeckTooltip"
 				confirmationTooltip
 				[askConfirmation]="true"
-				[confirmationTitle]="'app.duels.deck-stat.delete-deck-confirmation-title' | owTranslate"
+				
 				[confirmationText]="'app.duels.deck-stat.delete-deck-confirmation-text' | owTranslate"
 				[validButtonText]="'app.duels.deck-stat.delete-deck-confirmation-ok' | owTranslate"
-				[cancelButtonText]="'app.duels.deck-stat.delete-deck-confirmation-cancel' | owTranslate"
+				
 				(onConfirm)="deleteDeck()"
 				inlineSVG="assets/svg/bin.svg"
 			></button>

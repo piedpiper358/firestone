@@ -114,7 +114,10 @@ export class DuelsClassesRecapComponent extends AbstractSubscriptionComponent im
 					return {
 						totalRuns: runs.length,
 						averageWinsPerRun: runs.map((run) => run.wins).reduce((a, b) => a + b, 0) / runs.length,
-						mostPlayedClasses: this.buildPlayerClass(runs, (a, b) => b.length - a.length),
+						mostPlayedClasses: this.buildPlayerClass(
+							runs, 
+							(a, b) => b.map((run) => run.steps).reduce((a, b) => a.concat(b), []).length - a.map((run) => run.steps).reduce((a, b) => a.concat(b), []).length,
+						),
 						bestWinrateClasses: this.buildPlayerClass(
 							runs,
 							(a, b) => this.buildWinrate(b) - this.buildWinrate(a),

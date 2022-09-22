@@ -25,55 +25,35 @@
 			margin-right: 5px;
 		}
 
-		&.beast {
-			.node {
-				background: #26a024;
-			}
+		&.beast .node {
+			background: #427001;
 		}
-		&.mech {
-			.node {
-				background: #404ed3;
-			}
+		&.mech .node {
+			background: #f2d241;
 		}
-		&.dragon {
-			.node {
-				background: #e9a943;
-			}
+		&.dragon .node {
+			background: #f07f07;
 		}
-		&.demon {
-			.node {
-				background: #a276af;
-			}
+		&.demon .node {
+			background: #873f99;
 		}
-		&.murloc {
-			.node {
-				background: #9fb6d7;
-			}
+		&.murloc .node {
+			background: #19c916;
 		}
-		&.pirate {
-			.node {
-				background: #43403d;
-			}
+		&.pirate .node {
+			background: #393A3D;
 		}
-		&.elemental {
-			.node {
-				background: #de5959;
-			}
+		&.elemental .node {
+			background: #4a98ff;
 		}
-		&.quilboar {
-			.node {
-				background: #c56700;
-			}
+		&.quilboar .node {
+			background: #d12626;
 		}
-		&.naga {
-			.node {
-				background: #13928c;
-			}
+		&.naga .node {
+			background: #13928c;
 		}
-		&.blank {
-			.node {
-				background: #d9c3ab;
-			}
+		&.blank .node {
+			background: #d9c3ab;
 		}
 	}
 }

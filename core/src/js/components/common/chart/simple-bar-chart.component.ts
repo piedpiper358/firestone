@@ -143,7 +143,7 @@ export class SimpleBarChartComponent {
 						<div class="body">
 							<div class="title">${this.tooltipTitle}</div>
 							<div class="label">${dataPoint.label} wins</div>
-							<div class="value">${(+dataPoint.value).toFixed(1)}% of runs</div>
+							<div class="value" [owTranslate]="app.global.graph.wins-value"> ${(+dataPoint.value).toFixed(1)}</div>
 						</div>
 					`;
 
