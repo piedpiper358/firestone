@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { LocalizationFacadeService } from '@services/localization-facade.service';
 import { BattleSpeedModifier } from '../../../../models/mercenaries/mercenaries-battle-state';
 import { CardsFacadeService } from '../../../../services/cards-facade.service';
+import { isPassiveMercsTreasure, isSpeedHidden} from '../../../../services/mercenaries/mercenaries-utils';
 
 @Component({
 	selector: 'mercenaries-team-ability',
@@ -40,7 +41,7 @@ import { CardsFacadeService } from '../../../../services/cards-facade.service';
 				*ngIf="speed != null"
 				[helpTooltip]="speedModifierTooltip"
 			>
-				<div class="value">{{ speedForDisplay }}</div>
+				<div class="value" *ngIf="displaySpeed">{{ speedForDisplay }}</div>
 				<img
 					class="speed-icon"
 					src="https://static.zerotoheroes.com/hearthstone/asset/firestone/mercenaries_speed_icon.png"
@@ -106,6 +107,7 @@ export class MercenariesTeamAbilityComponent {
 				: // It can happen that the ability hasn't been modified by a COST tag change, but that
 				  // we know some modifiers apply to the hero. In this case, we show it
 				  value.speed + (this.speedModifier?.value ?? 0);
+		this.displaySpeed = !isSpeedHidden(this.cardId, this.allCards)
 		this.speedForDisplay = this.speed == null ? null : Math.max(0, this.speed);
 		const influences = (this.speedModifier?.influences ?? [])
 			.map((influence) => `${this.allCards.getCard(influence.cardId).name}: ${influence.value}`)
@@ -133,6 +135,7 @@ export class MercenariesTeamAbilityComponent {
 	baseSpeed: number;
 	speed: number;
 	speedForDisplay: number;
+	displaySpeed: boolean;
 	cooldown: number;
 	cooldownLeft: number;
 	cooldownLeftTooltip: string;
